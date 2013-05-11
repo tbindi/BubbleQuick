@@ -1,0 +1,11 @@
+Basic:
+1. make : builds the executable program.
+2. make profile : profile the bubble sort and quick sort.
+3. make plot : generate a graph containing the plot of time taken for bubble sort and quick sort.
+4. make clean : removes all the data, log and aux files from the folder.
+5. make report : to generate report corresponding to the particular latex file.
+
+PS: In our folder make report generally contains make clean and make plot. This removes the older files and plots the new graph and new profile.
+Instead of giving command make and make plot we can just use make report. This also avoids overlapping of the graph using previous values and thus making the user job easy.
+
+For quick sort we have used do-while(); concept in c code and while() concept in tex file.

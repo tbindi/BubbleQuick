@@ -1,0 +1,192 @@
+\documentclass{article}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{graphicx}
+
+\begin{document}
+\title{BUBBLE SORT AND QUICK SORT}
+\author{Sagar.S , Thanmai.M.Bindi , Varun.P.Shastry }
+\date{10th Feb 2010}
+\maketitle
+
+
+
+\section{GENERAL DESCRIPTION}
+\textbf{Bubble Sort} is a simple sorting algorithm.\\
+This algorithm is used to arrange the given set of elements in \textit{non descinding} order.\\
+The algorithm gets its name from the way smaller elements "bubble" to the top of the list. Because it only uses comparisons to operate on elements, it is a comparison sort.
+
+\textbf{Quick Sort} is a comparison sort and an efficient type of sort.\\
+This algorithm is used to sort the given set of elements in \textit{ascending} order.\\
+A random element is picked from the set of elements and the elements which are less than are dropped on the left side and the one which is greater are dropped on the right side of the element picked.
+
+\section{ALGORITHM}
+\subsection{Bubble sort}
+\begin{itemize}
+\item  It works by repeatedly stepping through the list to be sorted, comparing each pair of adjacent items and swapping them if they are in the wrong order. The pass through the list is repeated until no swaps are needed, which indicates that the list is sorted. 
+The algorithm for the bubble sort can be seen in Algorithm 1.
+
+
+\end{itemize}
+\subsection{Quick sort}
+The steps involved in Quick sort algorithm is as follows:
+\begin{itemize}
+\item  Pick an element, called a pivot , from the list.
+\item  Reorder the list so that all the elements which are less than the pivot come before the pivot and so that all elements greater than the pivot come after it (equal values can go either way). After this partitioning, the pivot is in its final position. This is called the partition operation.
+\item  Recursively sort the sub-list of lesser elements and the sub-list of greater elements.
+\end{itemize}
+
+The algorithm for the quick sort can be seen in Algorithm 2,3 and 4.
+\section{CODE}
+\subsection{Bubble SORT}
+\begin{algorithm}
+\caption{Bubblesort(array , n)}
+\begin{algorithmic}
+ \FOR {$i \leftarrow 0 ~to~ n-1 $}
+ \FOR {$j \leftarrow 0 ~to~ n-1-i$}
+ 
+\IF {$(a[j] > a[j+1])$}    
+
+	
+\STATE swap(a[j],a[j+1])
+\ENDIF
+\ENDFOR
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+\subsection{Quick Sort}
+\begin{algorithm}
+\caption{Findpivot(array ,left)}
+\begin{algorithmic}
+\RETURN {$array[left]$}
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{Partition(array , left , right)}
+\begin{algorithmic}
+ \STATE pivot {$\leftarrow$} Findpivot(array , left )
+ \STATE i {$\leftarrow$} left
+ \STATE j {$\leftarrow$} right+1
+ \WHILE {$(1)$}
+	\WHILE {$(array[i] < pivot ~and~ i < right)$}
+	\STATE i++	
+	\ENDWHILE
+	\WHILE {$(array[i] > pivot)$}
+	\STATE j--	
+	\ENDWHILE
+	\IF {$(i < j)$}
+	\STATE swap(array[i],array[j])
+        \ELSE
+	\STATE swap(array[left],array[j])
+	\RETURN {$(j)$}
+	\ENDIF
+ \ENDWHILE
+	
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{quicksort(array , left , right )}
+\begin{algorithmic}
+ {
+  \IF{$(left < right)$}
+	\STATE Q {$\leftarrow$} Partition(array , left , right)
+	\STATE quicksort(array , left , Q-1 )
+	\STATE quicksort(array , Q+1 , right)
+  \ENDIF
+ }
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{COMPLEXITY}
+\subsection{Bubble Sort}
+The time complexity of the algorithm is O($n^2$).\\
+This is true for all the cases.
+\subsection{Quick Sort}
+The time complexity of the algorithm is O($nlog(n)$)[average and base case].\\
+The time complexity of the algorithm for the worst case is O($n^2$).
+\section{Profiling}
+
+%Flat profile:
+%
+%Each sample counts as 0.01 seconds.\\
+%  \begin{table}[h]
+%\begin{tabular}{|c|c|c|c|c|c|c|}
+%\hline\hline
+%
+%
+% \%time & cumulative secs  &self secs &calls &self s/call &total s/call &name \\
+%       
+% \hline
+%99.98    & 81.56    &81.56       &10     &8.16     &8.16  &bubble \\
+%  0.02     &81.58     &0.02        &         &         &        &main\\
+%\hline
+%\end{tabular}
+%\end{table}
+%
+%\begin{itemize}
+%\item 
+% \% time        the percentage of the total running time of the
+%      program used by this function.
+
+%
+%\item cumulative secs a running sum of the number of seconds accounted
+%    for by this function and those listed above it.
+%
+%\item  self secs     the number of seconds accounted for by this   function alone.  This is the major sort for this
+%           listing.
+%
+%\item calls      the number of times this function was invoked, if
+%           this function is profiled, else blank.
+% 
+%\item  self ms/call     the average number of milliseconds spent in this
+%    function per call, if this function is profiled,
+%	   else blank.
+%
+% \item total ms/call    the average number of milliseconds spent in this
+%    function and its descendents per call, if this 
+%	   function is profiled, else blank.
+%
+%\item name       the name of the function. 
+%
+%\end{itemize}
+\begin{table}[h]
+\caption{Bubble Sort}
+\centering
+
+
+\begin{tabular}{|c|c|} 
+\hline 
+\hline 
+no of elements  &  time taken in secs\\ 
+\hline 
+10000 & 0.770000\\
+20000 & 2.790000\\
+30000 & 6.240000\\
+40000 & 11.080000\\
+50000 & 17.390000\\
+\hline 
+\end{tabular}
+
+\caption{Quick Sort}
+\centering
+\begin{tabular}{|c|c|}
+\hline 
+\hline 
+no of elements  &  time taken in secs\\ 
+\hline
+10000 & 0.190000\\
+20000 & 0.790000\\
+30000 & 1.800000\\
+40000 & 3.180000\\
+50000 & 4.960000\\
+\hline
+\end{tabular}
+\end{table}
+\begin{figure}
+\includegraphics[height=3in,width=3in]{bubble.jpg}
+\caption{Graph Plot Of Bubble Sort}
+\end{figure}
+
+
+\end{document}
